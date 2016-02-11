@@ -1,11 +1,15 @@
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import grid_search
+from sklearn.feature_extraction.text import CountVectorizer
 from spark_sklearn import GridSearchCV
 
 
 class Classifier:
 	def __init__(self):
 		self.model = None
+
+	def preprocess(self, data):
+		return CountVectorizer().fit_transform(data)
 
 	def train(self,X, y):
 		param_grid = {
