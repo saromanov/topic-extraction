@@ -21,4 +21,6 @@ class Classifier:
 		self.model.fit(X, y)
 
 	def preidict(self, X):
+		if self.model is None:
+			return 
 		return self.model.predict(X)
