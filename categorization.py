@@ -1,4 +1,5 @@
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
 from sklearn import grid_search
 from sklearn.feature_extraction.text import CountVectorizer
 from spark_sklearn import GridSearchCV
@@ -11,12 +12,15 @@ class Classifier:
 	def preprocess(self, data):
 		return CountVectorizer().fit_transform(data)
 
-	def train(self,X, y):
+	def train(self,X, y, method="rf"):
 		param_grid = {
 		  "max_depth": [6, None],
 		  "max_features": [5,10,20],
 		  "bootstrap": [True, False],
 		}
+		obj = RandomForestClassifier()
+		if method == "svm":
+			obj = SVC()
 		self.model = GridSearchCV(RandomForestClassifier(), param_grid=param_grid)
 		self.model.fit(X, y)
 
