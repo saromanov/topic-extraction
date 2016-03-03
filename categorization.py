@@ -17,7 +17,6 @@ class Classifier:
 		param_grid = {
 		  "max_depth": [6, None],
 		  "max_features": [5,10,20],
-		  "bootstrap": [True, False],
 		}
 		obj = RandomForestClassifier()
 		if method == "svm":
