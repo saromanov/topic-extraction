@@ -10,6 +10,7 @@ class Classifier:
 		self.model = None
 
 	def preprocess(self, data):
+		''' Optional for preprocessing'''
 		return CountVectorizer().fit_transform(data)
 
 	def train(self,X, y, method="rf"):
